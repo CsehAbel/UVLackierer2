@@ -1,0 +1,25 @@
+.elso input, .elso label{
+	float:left;
+	display:block;
+	clear: both;
+	width: 90%;
+	color: rgb(10,73,88);
+	font-weight: bold;
+	text-shadow: 1px 1px 1px white;
+}
+
+.elso > span{
+	display:block;
+	float: left;
+}
+
+form > div > div > input{
+	margin: 5px 0px 0px 0px;	
+}
+
+.gombok > input{
+	margin: 5px;
+	padding: 7px;
+	border-radius: 4px;
+	width: 50%;
+}

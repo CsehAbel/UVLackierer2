@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:composition template="ReceptTemplate.xhtml">
+		<ui:define name="in">
+			<div class="fejlec">Motorok beszkennelése</div>
+			<div>
+				<h:form>
+					<div>
+					<h:inputText id="lej" value="#{lejHandler.lejszam}" p:placeholder="Lejszám keresése"
+					converterMessage="Nem számjegyek.">
+						<f:validator binding="#{joinValidator}"></f:validator>
+					</h:inputText>
+					<h:message for="lej" errorStyle="color:red"/>
+					<h:commandButton action="#{inputHandler.addLcl(lejHandler.lejszam)}" value="Enter" />
+					</div>
+					<h:dataTable var="lcx" value="#{inputHandler.lcl}">
+						<h:column>
+							<f:facet name="header">Törlés</f:facet>
+							<h:commandButton action="#{inputHandler.torol(lcx)}" value="Törlés">
+								<f:ajax execute="@this" render="@form" ></f:ajax>
+							</h:commandButton>
+						</h:column>
+						<h:column>
+							<f:facet name="header"># Lejelentésszám</f:facet>
+							<h:outputFormat value="#{lcx.l}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Cikkszám</f:facet>
+							<h:outputFormat value="#{lcx.c}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Dátum1</f:facet>
+							<span>...</span>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Wärmenzeit</f:facet>
+							<h:outputFormat value="#{lcx.r.waermen_zeit}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Tauchenzeit</f:facet>
+							<h:outputFormat value="#{lcx.r.tauchen_1_zeit}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Abtropfenzeit</f:facet>
+							<h:outputFormat value="#{lcx.r.abtropfen_zeit}" />
+						</h:column>
+					</h:dataTable>
+				</h:form>
+			</div>
+		</ui:define>
+		<ui:define name="link">
+			<h:commandLink action="#{inputHandler.navi()}" value=">>Sorrend mutatása"></h:commandLink>
+			<h:commandLink action="ReceptIn" value=">>Receptek felvitele"></h:commandLink>
+		</ui:define>
+	</ui:composition>
+</html>

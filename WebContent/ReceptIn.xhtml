@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:composition template="ReceptTemplate.xhtml">
+		<ui:define name="head">
+			<h:outputStylesheet name="css/rstyle2_labelinput.css" />
+			<h:outputStylesheet name="css/rstyle_table.css" />
+			<h:outputStylesheet name="css/rstyle_div.css" />
+			<div class="fejlec">Receptek felvitele az adatbázisba.</div>
+		</ui:define>
+	
+		<ui:define name="in">
+			<h:messages globalOnly="true" errorStyle="color:red"/>
+			<h:form>
+				<div jsf:rendered="true" class="elso">
+					<div>
+						<h:outputLabel value="Teilenummer:" for="t"/>
+						<h:inputText  id="t" value="#{receptek.teilenummer}">
+							<f:validator binding="#{tValidator}"/>
+						</h:inputText>
+					</div>
+					<h:message for="t" errorStyle="color:red" />
+					<div>
+						<h:outputLabel value="Wärmenzeit:" for="w"/>
+						<h:inputText id="w" value="#{ receptek.waermen_zeit}" converterMessage="Nem számjegy!">
+							<f:validator validatorId="validator.IntValidator" />
+						</h:inputText>
+					</div>
+					<h:message for="w" errorStyle="color:red"/>
+					<div>
+						<h:outputLabel value="Tauchenzeit:" for="tz"/>
+						<h:inputText id="tz" value="#{ receptek.tauchen_1_zeit }" converterMessage="Nem számjegy!">
+							<f:validator validatorId="validator.IntValidator" />
+						</h:inputText>
+					</div>
+					<h:message for="tz" errorStyle="color:red"/>
+					<div>
+						<h:outputLabel value="Abtropfenzeit:" for="a"/>
+						<h:inputText id="a" value="#{ receptek.abtropfen_zeit}" converterMessage="Nem számjegy!">
+							<f:validator validatorId="validator.IntValidator" />
+						</h:inputText>
+					</div>
+					<h:message for="a" errorStyle="color:red"/>
+					<div class="gombok">
+						<h:commandButton action="#{receptekHandler.save()}" value="Mentés" />
+					</div>
+				</div>
+				
+				<div class="masodik">
+					<h:dataTable class="fixed_header" var="r" value="#{receptekHandler.receptek}">
+					 <h:column> 
+						 <f:facet name="header">Teilenummer</f:facet>
+						 <h:outputFormat value="#{ r.teilenummer }" />
+					 </h:column>
+					 <h:column>
+					 	<f:facet name="header">Wärmenzeit</f:facet>
+					 	<h:outputFormat value="#{ r.waermen_zeit }" />
+					 </h:column>
+					 <h:column>
+					 	<f:facet name="header">Tauchenzeit</f:facet>
+					 	<h:outputFormat value="#{ r.tauchen_1_zeit }" />
+					 </h:column>
+					 <h:column>
+					 	<f:facet name="header">Abtropfenzeit</f:facet>
+					 	<h:outputFormat value="#{ r.abtropfen_zeit }" />
+					 </h:column>
+					 <h:column>
+					 	<f:facet name="header">Törlés</f:facet>
+					 	<h:commandLink action="#{receptekHandler.deleteRecept(r.teilenummer)}" value="">Törlés</h:commandLink>
+					 </h:column>
+					 
+					</h:dataTable>
+			    </div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>

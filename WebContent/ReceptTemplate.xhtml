@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>Recept hozzáadása</title>
+	<h:outputStylesheet name="css/rstyle.css"  />
+	<ui:insert name="head" ></ui:insert>
+</h:head> 
+<body> 
+	<ui:insert name="in"></ui:insert>
+	<div class="lablec">
+		<h:form>
+			<h:commandLink action="#{receptekHandler.navi()}" value="&gt;&gt;Motorok beszkennelése" />
+			<ui:insert name="link" ></ui:insert>
+		</h:form>
+	</div>
+</body> 
+</html>

@@ -1,0 +1,30 @@
+
+
+.elso{
+	float: left;
+	margin: 0px 10px 10px 0px;
+	background-color: rgb(246,231,210);
+	border-left: 2px black;
+	padding: 10px;
+	border-radius: 20px;
+	color: white;
+	font-weight: bold;
+	text-shadow: 1px 1px 3px rgb(10,73,88);
+	box-shadow: 2px 2px 2px black;
+}
+
+.masodik{
+	float: left;
+	background-color: rgb(246,231,210);
+	border-left: 2px black;
+	padding: 10px;
+	border-radius: 20px;
+	box-shadow: 2px 2px 2px black;
+	width: 70%;
+}
+
+form{
+	width: 70%;
+	margin: auto;
+	display: block;
+}

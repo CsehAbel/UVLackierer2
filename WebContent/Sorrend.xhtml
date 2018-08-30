@@ -2,18 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:jsf="http://xmlns.jcp.org/jsf">
+      xmlns:h="http://java.sun.com/jsf/html">
 
 	<ui:composition template="/ReceptTemplate.xhtml">
 		<ui:define name="head">
 			<title>Sorrend</title>
 			<h:outputStylesheet name="css/truefalse.css"></h:outputStylesheet>
+			<h:outputStylesheet name="css/rstyle_table.css"></h:outputStylesheet>
 		</ui:define>
 		<ui:define name="in">
 			
 			<h:form>
-				<h:dataTable var="lc" value="#{controller.megjelenitendo}">
+				<h:dataTable class="fixed_header" var="lc" value="#{controller.megjelenitendo}">
 					<h:column>
 						<f:facet name="header">Sorszám</f:facet>
 						<h:outputFormat value="#{lc.sorszam}" />

@@ -6,11 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.Dependent;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import auth.NavigationBean;
 import controller.Controller;
 import lej.bean.LejManager;
 import lej.entity.LejCikk;
@@ -31,6 +33,9 @@ public class InputHandler implements Serializable {
 	@Inject
 	private Controller controller;
 	
+	@Inject
+	private NavigationBean nav;
+	
 
 	private ArrayList<LejCikk> lcl=new ArrayList<LejCikk>();
 
@@ -48,13 +53,13 @@ public class InputHandler implements Serializable {
 	
 	public String navi(){
 		if(lcl.isEmpty()&&controller.getView().isEmpty()){
-			return "nincslejcikk";
+			return nav.redirectToLejCikk();
 		} else if(!lcl.isEmpty()) {
 			controller.addView(lcl);
 			lcl.clear();
-			return "vanlejcikk";
+			return nav.toSorrend();
 		} else {
-			return "vanlejcikk";
+			return nav.toSorrend();
 		}
 	}
 	

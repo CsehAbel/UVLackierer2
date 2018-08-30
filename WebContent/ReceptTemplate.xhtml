@@ -3,7 +3,8 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"> 
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"> 
 
 <h:head>
 	<title>Recept hozzáadása</title>
@@ -17,9 +18,9 @@
 					<div jsf:rendered="#{!loginBean.loggedIn}">
 						Felhasználó: <h:inputText value="#{loginBean.user}" />
 						Jelszó: <h:inputText value="#{loginBean.pass}" />
-						<h:commandLink action="#{loginBean.doLogin()}" value="Bejelentkezés" />
-						<h:commandLink action="#{loginBean.doAtugor()}" value="Átugrás" />
+						<h:commandLink id="login" action="#{loginBean.doLogin()}" value="Bejelentkezés" />
 					</div>
+					<h:messages globalOnly="true"/>
 					<div jsf:rendered="#{loginBean.loggedIn}">
 						<h:outputFormat value="#{loginBean.user}" />
 						<h:commandLink action="#{loginBean.doLogout()}" value="Kijelentkezés" />

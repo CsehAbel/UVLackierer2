@@ -30,8 +30,7 @@ public class LoginBean implements Serializable {
 				
 				if(this.User.equals(user)&&this.Pass.equals(pass)){
 					loggedIn=true;
-					System.out.println("Bejelentkezve");
-					return nav.redirectToLejCikk();
+					return nav.toSorrend();
 				}
 			}
 			FacesMessage msg=new FacesMessage("Hibás felhasználó, bejelentkezés átugrása", "Bejelentkezési_Hiba");

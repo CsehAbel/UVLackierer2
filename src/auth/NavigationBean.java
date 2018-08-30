@@ -14,12 +14,11 @@ public class NavigationBean implements Serializable {
 	}
 	
 	public String redirectToLejCikk(){
-		System.out.println("redirect LejCikk");
 		return "/korlatozott/LejCikk.jpg?faces-redirect=true";
 	}
 	
 	public String redirectToRecept(){
-		
+		return "/korlatozott/ReceptIn.jpg?faces-redirect=true";
 	}
 
 }

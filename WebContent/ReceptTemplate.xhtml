@@ -3,7 +3,6 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough"> 
 
 <h:head>
@@ -12,10 +11,25 @@
 	<ui:insert name="head" ></ui:insert>
 </h:head> 
 <body> 
+	<div class="fejlec">
+		<div><ui:insert name="szalag"></ui:insert></div>
+		<h:form>
+					<div jsf:rendered="#{!loginBean.loggedIn}">
+						Felhasználó: <h:inputText value="#{loginBean.user}" />
+						Jelszó: <h:inputText value="#{loginBean.pass}" />
+						<h:commandLink action="#{loginBean.doLogin()}" value="Bejelentkezés" />
+						<h:commandLink action="#{loginBean.doAtugor()}" value="Átugrás" />
+					</div>
+					<div jsf:rendered="#{loginBean.loggedIn}">
+						<h:outputFormat value="#{loginBean.user}" />
+						<h:commandLink action="#{loginBean.doLogout()}" value="Kijelentkezés" />
+					</div>
+		</h:form>
+	</div>
 	<ui:insert name="in"></ui:insert>
 	<div class="lablec">
 		<h:form>
-			<h:commandLink action="#{receptekHandler.navi()}" value="&gt;&gt;Motorok beszkennelése" />
+			<h:commandLink action="#{navigationBean.redirectToLejCikk()}" value="&gt;&gt;Motorok beszkennelése" />
 			<ui:insert name="link" ></ui:insert>
 		</h:form>
 	</div>

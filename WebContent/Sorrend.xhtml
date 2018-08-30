@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
 
 	<ui:composition template="/ReceptTemplate.xhtml">
 		<ui:define name="head">
@@ -10,17 +11,7 @@
 			<h:outputStylesheet name="css/truefalse.css"></h:outputStylesheet>
 		</ui:define>
 		<ui:define name="in">
-			<h:form >
-				<div jsf:rendered="#{!loginBean.loggedIn}">
-					Felhasználó: <h:inputText value="#{loginBean.user}" />
-					Jelszó: <h:inputText value="#{loginBean.pass}" />
-					<h:commandLink action="#{loginBean.doLogin()}" value="Bejelentkezés" />
-					<h:commandLink action="#{loginBean.doAtugor()}" value="Átugrás" />
-				</div>
-				<div jsf:rendered="#{loginBean.loggedIn}">
-					<h:commandLink action="#{loginBean.doLogout()}" value="Kijelentkezés" />
-				</div>
-			</h:form>
+			
 			<h:form>
 				<h:dataTable var="lc" value="#{controller.megjelenitendo}">
 					<h:column>

@@ -1,21 +1,24 @@
 package auth;
 
+import java.io.Serializable;
+
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.application.FacesMessage.Severity;
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
 @SessionScoped
-public class LoginBean {
+public class LoginBean implements Serializable {
 	
 		private static final String[] felhasznalok={"admin:admin","muszakvezeto:almafa123"};
 
 		private String User,Pass;
 		
-		private boolean loggedIn=false;
+		private boolean loggedIn;
 		
 		@Inject
 		private NavigationBean nav;
@@ -27,6 +30,7 @@ public class LoginBean {
 				
 				if(this.User.equals(user)&&this.Pass.equals(pass)){
 					loggedIn=true;
+					System.out.println("Bejelentkezve");
 					return nav.redirectToLejCikk();
 				}
 			}

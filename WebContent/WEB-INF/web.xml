@@ -2,6 +2,7 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
  <display-name>Lakk</display-name>
+ <!-- Starting JSF -->
  <servlet>
   <servlet-name>Faces Servlet</servlet-name>
   <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -16,16 +17,25 @@
   <url-pattern>*.jpg</url-pattern>
  </servlet-mapping>
  <filter>
- 	<filter-name>RequestFilter</filter-name>
- 	<filter-class>Filter</filter-class>
+ 	<filter-name>LoginFilter</filter-name>
+ 	<filter-class>auth.LoginFilter</filter-class>
  	<init-param>
  		<param-name>test</param-name>
  		<param-value>testValue</param-value>
  	</init-param>
  </filter>
  <filter-mapping>
- 	<filter-name>RequestFilter</filter-name>
+ 	<filter-name>LoginFilter</filter-name>
  	<url-pattern>/korlatozott/*</url-pattern>
- 	<dispatcher>REQUEST</dispatcher>
  </filter-mapping>
+ <!-- By default go to secured welcome page -->
+    <welcome-file-list>
+        <welcome-file>korlatozott/Sorrend.jpg</welcome-file>
+    </welcome-file-list>
+ 
+    <!-- JSF URL mapping -->
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.jpg</url-pattern>
+    </servlet-mapping>
 </web-app>

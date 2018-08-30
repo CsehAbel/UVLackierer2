@@ -1,5 +1,7 @@
 package lej.entity;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,6 +16,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import recept.entity.Receptek;
 
 @NamedQueries({
@@ -28,11 +32,28 @@ public class LejCikk {
 	
 	private String c;
 	
+	private String d;
+	
+	@Transient
+	private boolean Berakva;
+	
+	@Transient
+	private int X;
+	
+	@Transient
+	private LocalDateTime Datum1;
+	
+	@Transient
+	private LocalDateTime Datum2;
+	
 	@Transient
 	private Receptek r;
 	
+	@Transient
+	private int Sorszam;
+	
 	public LejCikk(){
-		
+		this.Berakva=false;
 	}
 	
 	public LejCikk cloneLejCikk(){
@@ -77,6 +98,15 @@ public class LejCikk {
 	public void setC(String c) {
 		this.c = c;
 	}
+	
+
+	public String getD() {
+		return d;
+	}
+
+	public void setD(String d) {
+		this.d = d;
+	}
 
 	public Receptek getR() {
 		return r;
@@ -85,5 +115,48 @@ public class LejCikk {
 	public void setR(Receptek r) {
 		this.r = r;
 	}
+
+	public boolean isBerakva() {
+		return Berakva;
+	}
+
+	public void setBerakva(boolean berakva) {
+		Berakva =berakva;
+	}
+	
+	
+
+	public int getX() {
+		return X;
+	}
+
+	public void setX(int elozoWarmen) {
+		X = elozoWarmen+r.getTauchen_1_zeit()+r.getAbtropfen_zeit()+150-r.getWaermen_zeit();
+	}
+
+	public LocalDateTime getDatum1() {
+		return Datum1;
+	}
+
+	public void setDatum1(LocalDateTime datum1) {
+		Datum1 = datum1;
+	}
+
+	public LocalDateTime getDatum2() {
+		return Datum2;
+	}
+
+	public void setDatum2(LocalDateTime datum2) {
+		Datum2 = datum2;
+	}
+
+	public int getSorszam() {
+		return Sorszam;
+	}
+
+	public void setSorszam(int sorszam) {
+		Sorszam = sorszam;
+	}
+	
 	
 }

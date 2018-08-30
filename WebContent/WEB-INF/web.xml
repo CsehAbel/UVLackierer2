@@ -15,4 +15,17 @@
   <servlet-name>Faces Servlet</servlet-name>
   <url-pattern>*.jpg</url-pattern>
  </servlet-mapping>
+ <filter>
+ 	<filter-name>RequestFilter</filter-name>
+ 	<filter-class>Filter</filter-class>
+ 	<init-param>
+ 		<param-name>test</param-name>
+ 		<param-value>testValue</param-value>
+ 	</init-param>
+ </filter>
+ <filter-mapping>
+ 	<filter-name>RequestFilter</filter-name>
+ 	<url-pattern>/korlatozott/*</url-pattern>
+ 	<dispatcher>REQUEST</dispatcher>
+ </filter-mapping>
 </web-app>

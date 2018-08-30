@@ -7,6 +7,56 @@
 	<ui:composition template="/ReceptTemplate.xhtml">
 		<ui:define name="head">
 			<title>Sorrend</title>
+			<h:outputStylesheet name="css/truefalse.css"></h:outputStylesheet>
+		</ui:define>
+		<ui:define name="in">
+			<h:form >
+				<div jsf:rendered="#{!loginBean.loggedIn}">
+					Felhasználó: <h:inputText value="#{loginBean.user}" />
+					Jelszó: <h:inputText value="#{loginBean.pass}" />
+					<h:commandLink action="#{loginBean.doLogin()}" value="Bejelentkezés" />
+					<h:commandLink action="#{loginBean.doAtugor()}" value="Átugrás" />
+				</div>
+				<div jsf:rendered="#{loginBean.loggedIn}">
+					<h:commandLink action="#{loginBean.doLogout()}" value="Kijelentkezés" />
+				</div>
+			</h:form>
+			<h:form>
+				<h:dataTable var="lc" value="#{controller.megjelenitendo}">
+					<h:column>
+						<f:facet name="header">Sorszám</f:facet>
+						<h:outputFormat value="#{lc.sorszam}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Lejelentésszám</f:facet>
+						<h:outputFormat value="#{lc.l}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Cikkszám</f:facet>
+						<h:outputFormat value="#{lc.c}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Berakva</f:facet>
+						<h:outputFormat value="#{lc.berakva}" style="#{trueFalseCSS.css(lc.berakva)} color:black" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Wärmenzeit</f:facet>
+						<h:outputFormat value="#{lc.r.waermen_zeit}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">X</f:facet>
+						<h:outputFormat value="#{lc.x}" />
+					</h:column>
+				</h:dataTable>
+			
+			
+				<span>Kivezetés: </span>
+				<h:inputText id="kiinput" value="#{controller.kiLej}">
+					<f:validator binding="#{kiValidator}"></f:validator>
+				</h:inputText>
+				<h:commandButton action="#{controller.kivezet(controller.kiLej)}" value="Kivezetés" />
+				<h:message for="kiinput" errorStyle="color:red" />
+			</h:form>
 		</ui:define>
 	</ui:composition>
 </html>

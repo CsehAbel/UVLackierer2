@@ -1,0 +1,28 @@
+.tablakiv{
+	float: left;
+	clear: both;
+	width: 100%;
+}
+
+.kiv{ padding: 0px 10px;}
+
+.kiv >input{
+	width: 20%;
+	margin: 0px 20px;
+}
+
+.kiv > input[type="submit"]{
+	display: block;
+	clear: left;
+	width: 80px;
+	margin: 10px 0px;
+	padding: 0px;
+}
+
+.table > thead > tr > th{
+	width: 14.28%;
+}
+
+.table > tbody > tr > td{
+	width: 14.28%;
+}

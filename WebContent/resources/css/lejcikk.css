@@ -1,0 +1,18 @@
+.elso{
+	float: left;
+}
+
+.table > thead > tr > th{
+	width: 12.5%;
+}
+
+.table > tbody > tr > td{
+	width: 12.5%;
+}
+
+.tablakiv{
+	float: left;
+	margin: 0px 10px;
+	width: 100%;
+}
+

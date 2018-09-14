@@ -7,13 +7,11 @@
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 
 	<ui:composition template="../ReceptTemplate.xhtml">
+
 		<ui:define name="head">
-			<h:outputStylesheet name="css/rstyle2_labelinput.css" />
-			<h:outputStylesheet name="css/rstyle_table.css" />
-			<h:outputStylesheet name="css/rstyle_div.css" />
-			<div class="fejlec">Receptek felvitele az adatbázisba.</div>
+			<h:outputStylesheet name="css/receptek.css" />
 		</ui:define>
-	
+		<ui:define name="szalag">Receptek felvitele az adatbázisba.(CSV import)</ui:define>
 		<ui:define name="in">
 			<h:messages globalOnly="true" errorStyle="color:red"/>
 			<h:form>
@@ -51,9 +49,9 @@
 					</div>
 				</div>
 				
-				<div class="masodik">
-					<h:dataTable class="fixed_header" var="r" value="#{receptekHandler.receptek}">
-					 <h:column> 
+				<div class="container">
+					<h:dataTable class="table table-fixed" var="r" value="#{receptekHandler.receptek}">
+					 <h:column > 
 						 <f:facet name="header">Teilenummer</f:facet>
 						 <h:outputFormat value="#{ r.teilenummer }" />
 					 </h:column>
@@ -71,7 +69,9 @@
 					 </h:column>
 					 <h:column>
 					 	<f:facet name="header">Törlés</f:facet>
-					 	<h:commandLink action="#{receptekHandler.deleteRecept(r.teilenummer)}" value="">Törlés</h:commandLink>
+					 	<h:commandLink action="#{receptekHandler.deleteRecept(r.teilenummer)}" value="">Törlés
+					 		<f:ajax render="@all" execute="@this"></f:ajax>
+					 	</h:commandLink>
 					 </h:column>
 					 
 					</h:dataTable>

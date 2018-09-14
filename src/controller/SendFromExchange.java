@@ -1,5 +1,8 @@
 package controller;
 import java.util.*;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.mail.*;
 import javax.mail.internet.*;
 import javafx.scene.control.Alert;
@@ -48,7 +51,8 @@ public class SendFromExchange {
 	      sent.add("Sikeresen elküldve...");
 	      System.out.println("Sikeresen elküldve....");
 	   }catch (MessagingException mex) {
-	      mex.printStackTrace();
+		   
+		   FacesContext.getCurrentInstance().addMessage("emailhibaf:kiinput", new FacesMessage("Email küldési hiba:"+mex.getMessage()));
 	   }
 	}
 }

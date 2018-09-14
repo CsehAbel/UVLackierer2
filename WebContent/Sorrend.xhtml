@@ -7,13 +7,24 @@
 	<ui:composition template="/ReceptTemplate.xhtml">
 		<ui:define name="head">
 			<title>Sorrend</title>
-			<h:outputStylesheet name="css/truefalse.css"></h:outputStylesheet>
-			<h:outputStylesheet name="css/rstyle_table.css"></h:outputStylesheet>
+			<h:outputStylesheet name="css/sorrend.css" />
+			<h:outputScript name="js/sorrend.js" ></h:outputScript>
 		</ui:define>
+		<ui:define name="szalag">Lakkozási sorrend</ui:define>
 		<ui:define name="in">
+			<h:form class="tablakiv" id="emailhibaf">
 			
-			<h:form>
-				<h:dataTable class="fixed_header" var="lc" value="#{controller.megjelenitendo}">
+				<div class="kiv">
+				<span>Lejelentésszám: </span>
+				<h:inputText class="kivezet" id="kiinput" value="#{controller.kiLej}" converterMessage="Nem szám!" >
+					<f:validator binding="#{kiValidator}"></f:validator>
+				</h:inputText>
+				<h:commandButton class="gomb" action="#{controller.kivezet(controller.kiLej)}" value="Kivezetés" />
+				<h:message class="hiba" for="kiinput" errorStyle="color:red" />
+				</div>
+				
+				<div class="container">
+				<h:dataTable class=" table table-fixed" var="lc" value="#{controller.megjelenitendo}">
 					<h:column>
 						<f:facet name="header">Sorszám</f:facet>
 						<h:outputFormat value="#{lc.sorszam}" />
@@ -38,15 +49,12 @@
 						<f:facet name="header">X</f:facet>
 						<h:outputFormat value="#{lc.x}" />
 					</h:column>
+					<h:column>
+						<f:facet name="header">Kivezetve</f:facet>
+						<h:outputFormat value="#{lc.datum2}" />
+					</h:column>
 				</h:dataTable>
-			
-			
-				<span>Kivezetés: </span>
-				<h:inputText id="kiinput" value="#{controller.kiLej}">
-					<f:validator binding="#{kiValidator}"></f:validator>
-				</h:inputText>
-				<h:commandButton action="#{controller.kivezet(controller.kiLej)}" value="Kivezetés" />
-				<h:message for="kiinput" errorStyle="color:red" />
+				</div>
 			</h:form>
 		</ui:define>
 	</ui:composition>

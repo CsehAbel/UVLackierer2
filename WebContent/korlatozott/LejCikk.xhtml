@@ -7,20 +7,23 @@
 
 	<ui:composition template="../ReceptTemplate.xhtml">
 		<ui:define name="head">
-			<h:outputStylesheet name="css/rstyle_table.css"></h:outputStylesheet>
+			<h:outputStylesheet name="css/lejcikk.css" />
+			<h:outputScript name="js/lejcikk.js" ></h:outputScript>
 		</ui:define>
 		<ui:define name="in">
-			<div>
-				<h:form>
+				<h:form class="tablakiv">
+					
 					<div>
-					<h:inputText id="lej" value="#{lejHandler.lejszam}" p:placeholder="Lejszám keresése"
+					<h:inputText id="lej" class="lejszam" value="#{lejHandler.lejszam}" p:placeholder="Lejszám keresése"
 					converterMessage="Nem számjegyek.">
 						<f:validator binding="#{joinValidator}"></f:validator>
 					</h:inputText>
-					<h:message for="lej" errorStyle="color:red"/>
-					<h:commandButton action="#{inputHandler.addLcl(lejHandler.lejszam)}" value="Enter" />
+					<h:message class="hiba" for="lej" errorStyle="color:red"/>
+					<h:commandButton class="enter" action="#{inputHandler.addLcl(lejHandler.lejszam)}" value="Enter" />
 					</div>
-					<h:dataTable class="fixed_header" var="lcx" value="#{inputHandler.lcl}">
+					
+					<div class="container">
+					<h:dataTable class="table table-fixed" var="lcx" value="#{inputHandler.lcl}">
 						<h:column>
 							<f:facet name="header">Törlés</f:facet>
 							<h:commandButton action="#{inputHandler.torol(lcx)}" value="Törlés">
@@ -28,7 +31,7 @@
 							</h:commandButton>
 						</h:column>
 						<h:column>
-							<f:facet name="header"># Lejelentésszám</f:facet>
+							<f:facet name="header">#Lejelentésszám</f:facet>
 							<h:outputFormat value="#{lcx.l}" />
 						</h:column>
 						<h:column>
@@ -40,8 +43,8 @@
 							<h:outputFormat value="#{lcx.d}" />
 						</h:column>
 						<h:column>
-							<f:facet name="header">Dátum1</f:facet>
-							<span>...</span>
+							<f:facet name="header">Bevitel</f:facet>
+							<h:outputFormat value="#{lcx.datum1}"/>
 						</h:column>
 
 						<h:column>
@@ -57,12 +60,8 @@
 							<h:outputFormat value="#{lcx.r.abtropfen_zeit}" />
 						</h:column>
 					</h:dataTable>
+					</div>
 				</h:form>
-			</div>
-		</ui:define>
-		<ui:define name="link">
-			<h:commandLink action="#{inputHandler.navi()}" value=">>Sorrend mutatása"></h:commandLink>
-			<h:commandLink action="ReceptIn" value=">>Receptek felvitele"></h:commandLink>
 		</ui:define>
 	</ui:composition>
 </html>

@@ -1,0 +1,30 @@
+.elso{
+	padding: 0px 10px;
+	overflow: hidden;
+}
+.elso div{
+	float: left;
+	clear: left;
+	width: 300px;
+}
+.elso div input{
+  	width: 50%;
+  	float: right;
+}
+
+.elso div input[type="submit"]{
+	width: auto;
+	float: left;
+}
+
+.table > thead > tr > th{
+	width: 20%;
+}
+
+.table > tbody > tr > td{
+	width: 20%;
+}
+
+ .table > tbody > tr :LAST-CHILD {
+	width: auto;
+}

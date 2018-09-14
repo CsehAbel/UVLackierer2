@@ -9,30 +9,36 @@
 <h:head>
 	<title>Recept hozzáadása</title>
 	<h:outputStylesheet name="css/rstyle.css"  />
+	<h:outputStylesheet name="css/bootstrap.min.css" />
+	<h:outputScript name="js/bootstrap.min.js" />
+	<h:outputScript name="js/jquery-3.3.1.js" />
+	<h:outputScript name="js/init.js" />
+	<h:outputStylesheet name="css/template.css" />
+	<h:outputStylesheet name="css/rstyle_table.css" />
 	<ui:insert name="head" ></ui:insert>
 </h:head> 
 <body> 
+	 <div class="navbar" id="navbarSupportedContent">
+      		<h:form class="form-inline my-2 my-lg-0">
+				<h:commandLink class="nav-link #{view.viewId == '/korlatozott/LejCikk.xhtml'?'active':''}" action="#{navigationBean.redirectToLejCikk()}" value="&gt;&gt;Motorok beszkennelése"></h:commandLink>
+				<h:commandLink class="nav-link #{view.viewId == '/Sorrend.xhtml'?'active':''}" action="#{inputHandler.navi()}" value=">>Sorrend mutatása"></h:commandLink>
+				<h:commandLink class="nav-link #{view.viewId == '/korlatozott/ReceptIn.xhtml'?'active':''}" action="#{navigationBean.redirectToRecept()}" value=">>Receptek felvitele"></h:commandLink>
+			</h:form>
+	</div>	
 	<div class="fejlec">
-		<div><ui:insert name="szalag"></ui:insert></div>
 		<h:form>
 					<div jsf:rendered="#{!loginBean.loggedIn}">
-						Felhasználó: <h:inputText value="#{loginBean.user}" />
-						Jelszó: <h:inputText value="#{loginBean.pass}" />
+						<div>Felhasználó: </div> <h:inputText id="iu" value="#{loginBean.user}" />
+						<div>Jelszó: </div> <h:inputSecret id="ip" value="#{loginBean.pass}" />
 						<h:commandLink id="login" action="#{loginBean.doLogin()}" value="Bejelentkezés" />
 					</div>
 					<h:messages globalOnly="true"/>
 					<div jsf:rendered="#{loginBean.loggedIn}">
-						<h:outputFormat value="#{loginBean.user}" />
+						<div>#{loginBean.user} bejelentkezve</div>
 						<h:commandLink action="#{loginBean.doLogout()}" value="Kijelentkezés" />
 					</div>
 		</h:form>
 	</div>
 	<ui:insert name="in"></ui:insert>
-	<div class="lablec">
-		<h:form>
-			<h:commandLink action="#{navigationBean.redirectToLejCikk()}" value="&gt;&gt;Motorok beszkennelése" />
-			<ui:insert name="link" ></ui:insert>
-		</h:form>
-	</div>
 </body> 
 </html>

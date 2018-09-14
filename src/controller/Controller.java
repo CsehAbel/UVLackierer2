@@ -5,6 +5,8 @@ import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -20,11 +22,14 @@ import lej.entity.LejCikk;
 import tablazat.TablazatokController;
 
 @Named
-@SessionScoped
+@RequestScoped
 public class Controller implements Serializable{
 
 	@Inject
 	private TablazatokController tC;
+	
+	@EJB
+	private LogManager lm;
 
 	private int kiLej;
 
@@ -60,6 +65,11 @@ public class Controller implements Serializable{
 
 	public void setKiLej(int kiLej) {
 		this.kiLej = kiLej;
+	}
+
+	public void kivezetLog(LejCikk l) {
+		LogMotor log=new LogMotor(l.getL(),l.getC(), l.getDatum2());
+		lm.saveLogMotor(log);
 	}
 
 }

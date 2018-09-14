@@ -4,28 +4,17 @@ import controller.Rendezes;
 import controller.SendFromExchange;
 
 import java.io.Serializable;
-import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
-import java.util.ResourceBundle;
-
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
-import javax.sound.midi.Soundbank;
-
-import com.sun.media.jfxmediaimpl.platform.Platform;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableSet;
-import javafx.collections.SetChangeListener;
-
 import lej.entity.LejCikk;
 
 @SessionScoped
@@ -41,6 +30,9 @@ public class TablazatokController implements Serializable {
 	private ObservableList<LejCikk> view;
 	
 	private List<LejCikk> megjelenitendo;
+	
+	@Inject
+	private Controller controller;
 
 
 	@PostConstruct
@@ -107,7 +99,6 @@ public class TablazatokController implements Serializable {
 				break;
 			}
 		}
-		System.out.println(talalat.getL()+": "+talalat.isBerakva());
 		return talalat;
 	}
 
@@ -143,6 +134,8 @@ public class TablazatokController implements Serializable {
 		megjelenitendo.clear();
 		megjelenitendo.addAll(lockedSorted);
 		megjelenitendo.addAll(rendezett);
+		
+		controller.kivezetLog(l);
 	}
 
 	public void addView(LejCikk l) {

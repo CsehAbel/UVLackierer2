@@ -1,0 +1,25 @@
+*{box-sizing: border-box;}
+.fejlec{ width: 100%; float: left;}
+.fejlec > form{width: 22%; font-size: 0.8em; margin: 5px; overflow: hidden; float: right;}
+.fejlec > form > div{ padding: 5px; overflow: hidden;}
+.fejlec > form > div > div, .fejlec > form > div > input{ margin: 2px;}
+.fejlec > form > div > div{float: left; clear: left;}
+.fejlec > form > div > input{ float: right; }
+.fejlec > form > div > a{ float: left; clear: left; margin: 2px;}
+.fejlec > form > div,.fejlec > form > ul{ width: 100%;}
+.fejlec > form > ul{ float: left;}
+
+.navbar{float: left;clear: both;}
+
+.container{margin: 5px auto;float: left;}
+
+.hiba{display: block;clear: left;width: 200px;}
+
+.table > thead > tr > th{width: 12.5%;overflow: hidden;}
+
+.table > tbody > tr > td{width: 12.5%;overflow: hidden;}
+
+.navbar{padding: 0px;background-color: #333;width: 100%;}
+
+.navbar a{color: white; text-decoration: none }
+.navbar .active{background-color:#4CAF50;}

@@ -14,7 +14,7 @@ import recept.entity.Receptek;
 @Stateless
 public class ReceptekManager {
 	
-	@PersistenceContext
+	@PersistenceContext(unitName="Lakk1")
 	private EntityManager em;
 	
 	public Receptek saveRecept(Receptek r){

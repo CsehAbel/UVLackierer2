@@ -20,7 +20,9 @@ import lej.entity.LejCikk;
 @SessionScoped
 public class TablazatokController implements Serializable {
 	
-	private String lblC,lblD;
+	private String lblC;
+
+	private int lblD;
 	
 	
 	private Rendezes rendezes;
@@ -105,7 +107,7 @@ public class TablazatokController implements Serializable {
 	public void addLocked(LejCikk l) {
 		if((lockedSorted.size()!=megjelenitendo.size())&&!l.equals(megjelenitendo.get(lockedSorted.size()))){
 			List<String> sent=new ArrayList<String>();
-			SendFromExchange.send(sent,true,false,true,"abel710@yahoo.com","vektorgrafikA1","kecse.abel@ziehl-abegg.hu",""+LocalDateTime.now()+" Lakkozó: a sorrendtől eltértek.",""+l.getL(),"smtp.mail.yahoo.com");
+			SendFromExchange.send(sent,true,"KecseA","vektorgrafikA1","kecse.abel@ziehl-abegg.hu","kecse.abel@ziehl-abegg.hu",""+LocalDateTime.now()+" Lakkozó: a sorrendtől eltértek.",""+l.getL());
 		}
 		l.setBerakva(true);
 		l.setDatum2(LocalDateTime.now());

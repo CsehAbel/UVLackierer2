@@ -5,54 +5,42 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.mail.*;
 import javax.mail.internet.*;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 
 public class SendFromExchange {
 
-	public static void send(List<String> sent,boolean auth,boolean ssl,boolean tls,String from,String pass,String to,String subj,String msg,String host)
+	public static void send(List<String> sent,boolean auth,String user,String pass,String from,String to,String subj,String msg)
 	{
-	   // Get system properties
-	   Properties properties = System.getProperties();
-	   // Setup mail server
-	   properties.put("mail.smtp.host", host);
-	   properties.put("mail.smtp.user", from);
-	   properties.put("mail.smtp.password", pass);
-	   properties.put("mail.smtp.port", "587");
-	   if(auth)properties.put("mail.smtp.auth", "true");
-	   if(tls)properties.put("mail.smtp.starttls.enable", "true");
-	   if(ssl)properties.put("mail.smtp.ssl.enable", "true");
 
-	   // Get the default Session object.
-	   Session session = Session.getDefaultInstance(properties);
+	    Properties props = new Properties();
+	    props.put("mail.smtp.auth", auth);
+	    props.put("mail.debug", "true");
 
-	   try{
-	      // Create a default MimeMessage object.
-	      MimeMessage message = new MimeMessage(session);
+	    props.put("mail.smtp.host", "ziehlmail");
+	    props.put("mail.smtp.port", "25");
+	    props.put("mail.smtp.auth.mechanisms","NTLM");
 
-	      // Set From: header field of the header.
-	      message.setFrom(new InternetAddress(from));
+	    // *** CHANGED ***
+	    props.put("mail.smtp.auth.ntlm.domain","ziehlabegg2"); // Domain you log into Windows with
 
-	      // Set To: header field of the header.
-	      message.addRecipient(Message.RecipientType.TO,
-	                               new InternetAddress(to));
 
-	      // Set Subject: header field
-	      message.setSubject(subj);
+	    Session session = Session.getInstance(props,new MyAuthenticator(user,pass));
 
-	      // Now set the actual message
-	      message.setText(msg);
+	    try {
 
-	      // Send message
-	      Transport transport = session.getTransport("smtp");
-	      transport.connect(host, from, pass);
-	      transport.sendMessage(message, message.getAllRecipients());
-	      transport.close();
-	      sent.add("Sikeresen elküldve...");
-	      System.out.println("Sikeresen elküldve....");
-	   }catch (MessagingException mex) {
-		   
-		   FacesContext.getCurrentInstance().addMessage("emailhibaf:kiinput", new FacesMessage("Email küldési hiba:"+mex.getMessage()));
-	   }
+	        Message message = new MimeMessage(session);
+	        message.setFrom(new InternetAddress(from));
+	        message.setRecipients(Message.RecipientType.TO,
+	                InternetAddress.parse(to));
+	        message.setSubject(subj);
+	        message.setText(msg);
+
+	        Transport.send(message);
+	        
+	        sent.add("Sikeresen elküldve...");
+		    System.out.println("Sikeresen elküldve....");
+
+	    } catch (MessagingException mex) {
+	    	  FacesContext.getCurrentInstance().addMessage("emailhibaf:kiinput", new FacesMessage("Email küldési hiba:"+mex.getMessage()));
+	    }
 	}
 }

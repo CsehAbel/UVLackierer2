@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-	<persistence-unit name="Lakk">
-		<jta-data-source>java:jboss/datasources/MySqlDS2</jta-data-source>
+	<persistence-unit name="Lakk1">
+		<jta-data-source>java:jboss/datasources/lakksorrend</jta-data-source>
 		<class>lej.entity.LejCikk</class>
 		<class>recept.entity.Receptek</class>
 		<properties>
@@ -9,4 +9,14 @@
 			<property name="hibernate.show_sql" value="true"/>
 		</properties>
 	</persistence-unit>
+	
+	<persistence-unit name="Lakk2">
+		<jta-data-source>java:jboss/datasources/pA61</jta-data-source>
+		<class>lej.entity.LejCikk</class>
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+			<property name="hibernate.show_sql" value="true"/>
+		</properties>
+	</persistence-unit>
+	
 </persistence>

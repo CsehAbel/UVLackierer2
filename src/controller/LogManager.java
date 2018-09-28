@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class LogManager {
 
-	@PersistenceContext
+	@PersistenceContext(unitName="Lakk1")
 	private EntityManager em;
 	
 	public LogMotor saveLogMotor(LogMotor lm){

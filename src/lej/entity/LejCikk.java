@@ -3,6 +3,7 @@ package lej.entity;
 import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -24,16 +25,27 @@ import recept.entity.Receptek;
 	@NamedQuery(name = "select_lej", query = "SELECT lej FROM LejCikk lej WHERE lej.l=:l")
 })
 @Entity
-@Table(name="LC")
+@Table(name="PUB.PP_Auftrag")
 public class LejCikk {
 	
 	@Id
+	@Column(name="RueckMeldeNr")
 	private int l;
-	
+
+	@Column(name="Artikel")
 	private String c;
 	
-	private String d;
+	@Column(name="ProduktionsMenge")
+	private int d;
 	
+	public int getD() {
+		return d;
+	}
+
+	public void setD(int d) {
+		this.d = d;
+	}
+
 	@Transient
 	private boolean Berakva;
 	
@@ -60,7 +72,12 @@ public class LejCikk {
 		LejCikk l=new LejCikk();
 		l.setL(this.getL());
 		l.setC(this.getC());
+		l.setD(this.getD());
 		l.setR(this.getR());
+		l.setDatum1(this.getDatum1());
+		//l.setDatum2(this.getDatum2());
+		//l.setSorszam(this.getSorszam());
+		//l.setBerakva(this.isBerakva());
 		return l;
 	}
 
@@ -99,14 +116,6 @@ public class LejCikk {
 		this.c = c;
 	}
 	
-
-	public String getD() {
-		return d;
-	}
-
-	public void setD(String d) {
-		this.d = d;
-	}
 
 	public Receptek getR() {
 		return r;

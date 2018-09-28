@@ -12,7 +12,7 @@ import lej.entity.LejCikk;
 @Stateless
 public class LejManager {
 
-	@PersistenceContext
+	@PersistenceContext(unitName="Lakk2")
 	private EntityManager em;
 	
 	public LejCikk getLej(int lej){

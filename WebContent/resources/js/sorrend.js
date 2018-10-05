@@ -7,11 +7,11 @@ window.onload = function (){
 	
 	elem.value=0;
 	
-	elem.addEventListener("input", function() {
+	/*elem.addEventListener("input", function() {
 		if(this.value.match("^[0-9]{9}$")){
 			var kiv=document.getElementsByClassName("gomb")[0]
 			kiv.click();
 		}
-	})
+	})*/
 }
 		

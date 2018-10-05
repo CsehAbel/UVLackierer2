@@ -16,13 +16,13 @@ import lej.entity.LejCikk;
 @SessionScoped
 public class LejHandler implements Serializable {
 	
-	private int lejszam;
+	private String lejszam;
 
-	public int getLejszam() {
+	public String getLejszam() {
 		return lejszam;
 	}
 
-	public void setLejszam(int lejszam) {
+	public void setLejszam(String lejszam) {
 		this.lejszam = lejszam;
 	}
 	

@@ -43,8 +43,9 @@ public class InputHandler implements Serializable {
 		return lcl;
 	}
 	
-	public void addLcl(int lej){
-		LejCikk l=lm.getLej(lej).cloneLejCikk();
+	public void addLcl(String lej){
+		int ilej=Integer.parseInt(lej.substring(1, 9));
+		LejCikk l=lm.getLej(ilej).cloneLejCikk();
 		Receptek r=rm.getRecept(l.getC()).cloneReceptek();
 		System.out.println(""+l.getD());
 		l.setR(r);

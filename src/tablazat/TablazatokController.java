@@ -39,36 +39,6 @@ public class TablazatokController implements Serializable {
 
 	@PostConstruct
 	public void initialize() {
-		
-		/* EMAIL K�LD�S? LEJSZAM MEGKERESESE A TABLAZATBAN
-		kTF.textProperty().addListener((obs,oldV,newV)->{
-			if(newV.matches("[0-9]{8}")){
-				for(Lapat a:view){
-						if(Integer.parseInt(newV)==a.getLejszam()){
-							a.setBerakva(true);
-							lblC=a.getCikkszam();
-							lblD=""+a.getDarabszam()+" db";
-							if(!a.equals(view.get(lockedSorted.size()))){
-								List<String> sent=new ArrayList<String>();
-								SendFromYahoo.send(sent,true,false,true,"abel710@yahoo.com","vektorgrafikA1","kecse.abel@ziehl-abegg.hu",""+LocalDateTime.now()+" Lakkoz�: a sorrendt�l elt�rtek.",""+a.getLejszam(),"smtp.mail.yahoo.com");
-							}
-							Platform.runLater(()->{
-								kTF.clear();
-								kTF.setPromptText(" "+a.getLejszam());
-							});
-
-						}
-				}
-			}
-		});*/
-		
-		//Listener meg�r�sa ami berakja egy lockedSet-be
-				/*
-									if(l!=null&&l.isBerakva()) {
-										addLocked(l);
-									}		
-				*/		
-
 		megjelenitendo=new ArrayList<>();
 		lockedSorted=FXCollections.observableArrayList();
 		view=FXCollections.observableArrayList();

@@ -36,7 +36,7 @@ public class JoinValidator implements Validator {
 	@EJB
 	private ReceptekManager rm;
 	
-	private Pattern p=Pattern.compile("[0-9]{8}");
+	private Pattern p=Pattern.compile("[0-9\\*]{16}");
 	
 	@Override
 	public void validate(FacesContext arg0, UIComponent arg1, Object arg2) throws ValidatorException {
@@ -45,9 +45,11 @@ public class JoinValidator implements Validator {
 		}
 		if(!p.matcher(arg2.toString().trim()).matches()){
 			String label=(String) arg1.getAttributes().get("label");
-			throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR,(label==null || label.trim().length()==0 ? "A lejszám 8 számjegy.":"JoinValidator 36-os sor."), null));
+			throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR,(label==null || label.trim().length()==0 ? "A lejszám 14 számjegy+2csillag.":"JoinValidator 36-os sor."), null));
 		} else {
-			LejCikk l=lm.getLej(Integer.parseInt(arg2.toString().trim()));
+			String s=arg2.toString().trim();
+			int ilej=Integer.parseInt(s.substring(1, 9));
+			LejCikk l=lm.getLej(ilej);
 			String label=(String) arg1.getAttributes().get("label");
 			if(l==null){
 				throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR,(label==null || label.trim().length()==0 ? "Nincs ilyen lejszám.":"JoinValidator 43-as sor."), null));

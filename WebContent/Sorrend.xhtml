@@ -27,7 +27,9 @@
 				<h:dataTable class=" table table-fixed" var="lc" value="#{controller.megjelenitendo}">
 					<h:column>
 						<f:facet name="header">Sorszám</f:facet>
-						<h:outputFormat value="#{lc.sorszam}" />
+						<div style="#{trueFalseCSS.css(lc.berakva)} background-size: contain; background-repeat: no-repeat; background-position: center;">
+							<h:outputFormat value="#{lc.sorszam}" />
+						</div>
 					</h:column>
 					<h:column>
 						<f:facet name="header">Lejelentésszám</f:facet>
@@ -38,8 +40,8 @@
 						<h:outputFormat value="#{lc.c}" />
 					</h:column>
 					<h:column>
-						<f:facet name="header">Berakva</f:facet>
-						<h:outputFormat value="#{lc.berakva}" style="#{trueFalseCSS.css(lc.berakva)} color:black" />
+						<f:facet name="header">Kiszedve</f:facet>
+						<h:outputFormat value="#{lc.berakva}" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">Wärmenzeit</f:facet>

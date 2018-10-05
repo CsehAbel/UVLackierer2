@@ -5,6 +5,7 @@ import controller.SendFromExchange;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -77,7 +78,22 @@ public class TablazatokController implements Serializable {
 	public void addLocked(LejCikk l) {
 		if((lockedSorted.size()!=megjelenitendo.size())&&!l.equals(megjelenitendo.get(lockedSorted.size()))){
 			List<String> sent=new ArrayList<String>();
-			SendFromExchange.send(sent,true,"KecseA","vektorgrafikA1","kecse.abel@ziehl-abegg.hu","kecse.abel@ziehl-abegg.hu",""+LocalDateTime.now()+" Lakkozó: a sorrendtől eltértek.",""+l.getL());
+			String datum=LocalDateTime.now().format(DateTimeFormatter.ofPattern("yy-MM-dd HH:mm"));
+			String targy=datum+" Lakkozó: a sorrendtől eltértek.";
+			String uzenet="Kiszedve:\r\n"+l.getSorszam()+"\t"+l.getL()+"\r\nEredeti lista:\r\n";
+			List<LejCikk> listLc=new ArrayList<>();
+			listLc.addAll(view);
+			listLc.removeAll(lockedSorted);
+			for(LejCikk lc:megjelenitendo){
+				String sor="%s\t"+lc.getL()+"\r\n";
+				if(lc.isBerakva()){
+					sor=String.format(sor, "X");
+				} else {
+					sor=String.format(sor, ""+lc.getSorszam());
+				}
+				uzenet+=sor;
+			}
+			SendFromExchange.send(sent,true,"KecseA","vektorgrafikA1","kecse.abel@ziehl-abegg.hu","kecse.abel@ziehl-abegg.hu",targy,uzenet);
 		}
 		l.setBerakva(true);
 		l.setDatum2(LocalDateTime.now());

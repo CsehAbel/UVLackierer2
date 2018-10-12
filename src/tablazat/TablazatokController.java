@@ -124,6 +124,12 @@ public class TablazatokController implements Serializable {
 		megjelenitendo.addAll(rendezett);
 		
 		controller.kivezetLog(l);
+		
+		if(lockedSorted.size()==megjelenitendo.size()){
+			megjelenitendo.clear();
+			view.clear();
+			lockedSorted.clear();
+		}
 	}
 
 	public void addView(LejCikk l) {

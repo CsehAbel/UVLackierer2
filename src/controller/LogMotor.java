@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -12,6 +14,10 @@ import javax.persistence.Table;
 public class LogMotor {
 
 	@Id
+	@Column(name="id")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int id;
+	
 	@Column(name="L")
 	private int lej;
 	
@@ -55,6 +61,16 @@ public class LogMotor {
 	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	
 	
 	
 }

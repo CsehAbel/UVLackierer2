@@ -31,13 +31,14 @@ public class Controller implements Serializable{
 	@EJB
 	private LogManager lm;
 
-	private int kiLej;
+	private String kiLej;
 
 	public Controller(){
 	}
 
-	public void kivezet(int kiLej){
-		tC.kivezet(kiLej);
+	public void kivezet(String kiLej){
+		int i=Integer.parseInt(kiLej.substring(1,9));
+		tC.kivezet(i);
 	}
 	
 	
@@ -59,17 +60,19 @@ public class Controller implements Serializable{
 		return tC.getView();
 	}
 
-	public int getKiLej() {
-		return this.kiLej;
-	}
-
-	public void setKiLej(int kiLej) {
-		this.kiLej = kiLej;
-	}
-
 	public void kivezetLog(LejCikk l) {
 		LogMotor log=new LogMotor(l.getL(),l.getC(), l.getDatum2());
 		lm.saveLogMotor(log);
 	}
+
+	public String getKiLej() {
+		return kiLej;
+	}
+
+	public void setKiLej(String kiLej) {
+		this.kiLej = kiLej;
+	}
+	
+	
 
 }

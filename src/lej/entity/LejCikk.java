@@ -1,6 +1,7 @@
 package lej.entity;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -146,6 +147,10 @@ public class LejCikk {
 	public LocalDateTime getDatum1() {
 		return Datum1;
 	}
+	
+	public String getDatum1Szep(){
+		return Datum1.format(DateTimeFormatter.ofPattern("yy-MM-dd HH:mm"));
+	}
 
 	public void setDatum1(LocalDateTime datum1) {
 		Datum1 = datum1;
@@ -153,6 +158,13 @@ public class LejCikk {
 
 	public LocalDateTime getDatum2() {
 		return Datum2;
+	}
+	public String getDatum2Szep(){
+		if(Datum2!=null){
+			return Datum2.format(DateTimeFormatter.ofPattern("yy-MM-dd HH:mm"));}
+		else{
+			return " ";
+		}
 	}
 
 	public void setDatum2(LocalDateTime datum2) {

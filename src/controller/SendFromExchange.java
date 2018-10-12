@@ -8,7 +8,7 @@ import javax.mail.internet.*;
 
 public class SendFromExchange {
 
-	public static void send(List<String> sent,boolean auth,String user,String pass,String from,String to,String subj,String msg)
+	public static void send(List<String> sent,boolean auth,String user,String pass,String from,String jozsi,String en,String subj,String msg)
 	{
 
 	    Properties props = new Properties();
@@ -29,8 +29,8 @@ public class SendFromExchange {
 
 	        Message message = new MimeMessage(session);
 	        message.setFrom(new InternetAddress(from));
-	        message.setRecipients(Message.RecipientType.TO,
-	                InternetAddress.parse(to));
+	        
+	        message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(jozsi+","+en));
 	        message.setSubject(subj);
 	        message.setText(msg);
 

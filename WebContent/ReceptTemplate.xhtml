@@ -28,7 +28,7 @@
 		<h:form>
 					<div jsf:rendered="#{!loginBean.loggedIn}">
 						<div>Felhasználó: </div> <h:inputText id="iu" value="#{loginBean.user}" />
-						<div>Jelszó: </div> <h:inputSecret id="ip" value="#{loginBean.pass}" />
+						<!--  <div>Jelszó: </div> <h:inputSecret id="ip" value="#{loginBean.pass}" />-->
 						<h:commandLink id="login" action="#{loginBean.doLogin()}" value="Bejelentkezés" />
 					</div>
 					<h:messages globalOnly="true"/>

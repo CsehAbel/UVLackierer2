@@ -25,9 +25,10 @@ public class KiValidator implements Validator {
 			return;
 		}
 		String label=(String) arg1.getAttributes().get("label");
+		
 		//ha nincs benne a listában nem vezethetem ki
 		//ha már ki van vezetve nem vezethetem ki
-		LejCikk l=c.talal(Integer.parseInt(arg2.toString()));
+		LejCikk l=c.talal(Integer.parseInt(arg2.toString().substring(1, 9)));
 		if(l==null){
 			throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR,(label==null||label.trim().length()==0 ? "Nincs ilyen lejszámú a sorrendben.":"KiValidator 32."),null));
 		} else if(l.isBerakva()==true){

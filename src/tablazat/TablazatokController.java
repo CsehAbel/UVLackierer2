@@ -93,7 +93,7 @@ public class TablazatokController implements Serializable {
 				}
 				uzenet+=sor;
 			}
-			SendFromExchange.send(sent,true,"KecseA","vektorgrafikA1","kecse.abel@ziehl-abegg.hu","kecse.abel@ziehl-abegg.hu",targy,uzenet);
+			SendFromExchange.send(sent,true,"StromUV","Abcd123456","StromUV@ziehl-abegg.hu","peter.jozsef@ziehl-abegg.hu","kecse.abel@ziehl-abegg.hu",targy,uzenet);
 		}
 		l.setBerakva(true);
 		l.setDatum2(LocalDateTime.now());

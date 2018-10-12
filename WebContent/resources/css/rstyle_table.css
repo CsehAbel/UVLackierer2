@@ -23,3 +23,7 @@
  .table tr{
  	clear: left;
  }
+ 
+ .table-fixed tbody td:NTH-CHILD(6) {
+	overflow:hidden;
+}

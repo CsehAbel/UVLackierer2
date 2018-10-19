@@ -40,10 +40,7 @@ public class JoinValidator implements Validator {
 	
 	@Override
 	public void validate(FacesContext arg0, UIComponent arg1, Object arg2) throws ValidatorException {
-		if(arg2==null || arg2.toString().trim().length()==0){
-			return;
-		}
-		if(!p.matcher(arg2.toString().trim()).matches()){
+		if(arg2==null || arg2.toString().trim().length()==0||!p.matcher(arg2.toString().trim()).matches()){
 			String label=(String) arg1.getAttributes().get("label");
 			throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR,(label==null || label.trim().length()==0 ? "A lejszám 14 számjegy+2csillag.":"JoinValidator 36-os sor."), null));
 		} else {

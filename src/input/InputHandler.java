@@ -47,7 +47,6 @@ public class InputHandler implements Serializable {
 		int ilej=Integer.parseInt(lej.substring(1, 9));
 		LejCikk l=lm.getLej(ilej).cloneLejCikk();
 		Receptek r=rm.getRecept(l.getC()).cloneReceptek();
-		System.out.println(""+l.getD());
 		l.setR(r);
 		l.setDatum1(LocalDateTime.now());
 		lcl.add(l);

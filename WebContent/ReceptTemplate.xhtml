@@ -27,13 +27,13 @@
 	<div class="fejlec">
 		<h:form>
 					<div jsf:rendered="#{!loginBean.loggedIn}">
-						<div>Felhasználó: </div> <h:inputText id="iu" value="#{loginBean.user}" />
-						<!--  <div>Jelszó: </div> <h:inputSecret id="ip" value="#{loginBean.pass}" />-->
-						<h:commandLink id="login" action="#{loginBean.doLogin()}" value="Bejelentkezés" />
+						<div>Felhasználó: </div> <h:inputText id="iu" value="#{loginBean.usr}" />
+						
+						<h:commandButton id="login" action="#{loginBean.doLogin()}" value="Bejelentkezés" />
 					</div>
 					<h:messages globalOnly="true"/>
 					<div jsf:rendered="#{loginBean.loggedIn}">
-						<div>#{loginBean.user} bejelentkezve</div>
+						<div>#{loginBean.usr} bejelentkezve</div>
 						<h:commandLink action="#{loginBean.doLogout()}" value="Kijelentkezés" />
 					</div>
 		</h:form>

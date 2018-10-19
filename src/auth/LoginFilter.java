@@ -27,11 +27,8 @@ public class LoginFilter implements Filter{
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		
-		System.out.println(loginBean.getUser());
-		
 		if(loginBean==null||!loginBean.isLoggedIn()){
 			String contextPath = ((HttpServletRequest)request).getContextPath();
-			System.out.println("Filter loginbean null vagy !isLoggedIn");
 			((HttpServletResponse)response).sendRedirect(contextPath + "/Sorrend.jpg");
 		}
 		chain.doFilter(request, response);

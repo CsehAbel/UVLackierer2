@@ -2,6 +2,7 @@ package auth;
 
 import java.io.Serializable;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.application.FacesMessage.Severity;
@@ -14,9 +15,10 @@ import javax.inject.Named;
 @SessionScoped
 public class LoginBean implements Serializable {
 	
-		private static final String[] felhasznalok={"admin:admin","muszakvezeto:almafa123","14590:kk"};
+		@EJB
+		private UserManager um;
 
-		private String User,Pass;
+		private String usr;//,Pass;
 		
 		private boolean loggedIn;
 		
@@ -24,14 +26,10 @@ public class LoginBean implements Serializable {
 		private NavigationBean nav;
 		
 		public String doLogin(){
-			for(String felh:felhasznalok){
-				String user=felh.split(":")[0];
-				String pass=felh.split(":")[1];
-				
-				if(this.User.equals(user)){ //&&this.Pass.equals(pass)){
+			if(um.getUser(usr)!=null){ //&&this.Pass.equals(pass)){
+					usr=um.getUser(usr).getUser();
 					loggedIn=true;
 					return nav.toSorrend();
-				}
 			}
 			FacesMessage msg=new FacesMessage("Hibás felhasználó, bejelentkezés átugrása", "Bejelentkezési_Hiba");
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
@@ -53,20 +51,14 @@ public class LoginBean implements Serializable {
 			return nav.toSorrend();
 		}
 
-		public String getUser() {
-			return User;
+		
+
+		public String getUsr() {
+			return usr;
 		}
 
-		public void setUser(String user) {
-			User = user;
-		}
-
-		public String getPass() {
-			return Pass;
-		}
-
-		public void setPass(String pass) {
-			Pass = pass;
+		public void setUsr(String usr) {
+			this.usr = usr;
 		}
 
 		public boolean isLoggedIn() {

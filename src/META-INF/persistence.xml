@@ -4,6 +4,8 @@
 		<jta-data-source>java:jboss/datasources/lakksorrend</jta-data-source>
 		<class>lej.entity.LejCikk</class>
 		<class>recept.entity.Receptek</class>
+		<class>controller.LogMotor</class>
+		<class>auth.User</class>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
 			<property name="hibernate.show_sql" value="true"/>

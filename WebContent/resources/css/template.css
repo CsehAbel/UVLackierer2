@@ -3,8 +3,8 @@
 .fejlec > form{width: 22%; font-size: 0.8em; margin: 5px; overflow: hidden; float: right;}
 .fejlec > form > div{ padding: 5px; overflow: hidden;}
 .fejlec > form > div > div, .fejlec > form > div > input{ margin: 2px;}
-.fejlec > form > div > div{float: left; clear: left;}
-.fejlec > form > div > input{ float: right; }
+.fejlec > form > div > div{float: left; clear: left; margin: 2px 25px 2px 2px;}
+.fejlec > form > div > input{ float: left; }
 .fejlec > form > div > a{ float: left; clear: left; margin: 2px;}
 .fejlec > form > div,.fejlec > form > ul{ width: 100%;}
 .fejlec > form > ul{ float: left;}

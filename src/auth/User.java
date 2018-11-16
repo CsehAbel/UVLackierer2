@@ -23,6 +23,17 @@ public class User {
 	
 	@Column(name="user")
 	private String user;
+	
+	@Column(name="nev")
+	private String nev;
+
+	public String getNev() {
+		return nev;
+	}
+
+	public void setNev(String nev) {
+		this.nev = nev;
+	}
 
 	public int getId() {
 		return id;

@@ -7,6 +7,10 @@ window.onload = function (){
 	
 	elem.value='';
 	
+	var bejel=document.getElementsByClassName("bejelentkezes")[0];
+	
+	bejel.value='';
+	
 	/*elem.addEventListener("input", function() {
 		if(this.value.match("^[0-9]{9}$")){
 			var kiv=document.getElementsByClassName("gomb")[0]

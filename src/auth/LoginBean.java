@@ -19,6 +19,7 @@ public class LoginBean implements Serializable {
 		private UserManager um;
 
 		private String usr;//,Pass;
+		private String nev;
 		
 		private boolean loggedIn;
 		
@@ -28,6 +29,7 @@ public class LoginBean implements Serializable {
 		public String doLogin(){
 			if(um.getUser(usr)!=null){ //&&this.Pass.equals(pass)){
 					usr=um.getUser(usr).getUser();
+					nev=um.getUser(usr).getNev();
 					loggedIn=true;
 					return nav.redirectToLejCikk();
 			}
@@ -59,6 +61,14 @@ public class LoginBean implements Serializable {
 
 		public void setUsr(String usr) {
 			this.usr = usr;
+		}
+
+		public String getNev() {
+			return nev;
+		}
+
+		public void setNev(String nev) {
+			this.nev = nev;
 		}
 
 		public boolean isLoggedIn() {

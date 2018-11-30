@@ -10,7 +10,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @NamedQueries({
-	@NamedQuery(name = "select_user", query = "SELECT usr FROM User usr WHERE usr.user=:param")
+	@NamedQuery(name = "select_user", query = "SELECT usr FROM User usr WHERE usr.felh=:param")
 })
 @Entity
 @Table(name="user")
@@ -22,10 +22,13 @@ public class User {
 	private int id;
 	
 	@Column(name="user")
-	private String user;
+	private String felh;
 	
 	@Column(name="nev")
 	private String nev;
+	
+	@Column(name="vip")
+	private int vip;
 
 	public String getNev() {
 		return nev;
@@ -43,12 +46,20 @@ public class User {
 		this.id = id;
 	}
 
-	public String getUser() {
-		return user;
+	public String getFelh() {
+		return felh;
 	}
 
 	public void setUser(String user) {
-		this.user = user;
+		this.felh = user;
+	}
+
+	public int getVip() {
+		return vip;
+	}
+
+	public void setVip(int vip) {
+		this.vip = vip;
 	}
 
 }

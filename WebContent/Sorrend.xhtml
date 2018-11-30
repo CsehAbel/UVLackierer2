@@ -12,6 +12,16 @@
 		</ui:define>
 		<ui:define name="szalag">Lakkozási sorrend</ui:define>
 		<ui:define name="in">
+		    <h:form>
+		    	<div class="vipkiv">
+				<span>Kivételes prioritás:</span>
+				<h:inputText value="#{lejHandler.lejszam}" id="vipkiinput" class="kivezet" converterMessage="Nem szám!" >
+					<f:validator binding="#{vipKiValidator}"></f:validator>
+				</h:inputText>
+				<h:commandButton class="vipgomb" action="#{inputHandler.addVipLcl(lejHandler.lejszam)}" value="Kivezetés*" />
+				<h:message class="hiba" for="vipkiinput" errorStyle="color:red" />
+				</div>
+		    </h:form>
 			<h:form class="tablakiv" id="emailhibaf">
 			
 				<div class="kiv">

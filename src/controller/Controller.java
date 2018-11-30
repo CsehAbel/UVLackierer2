@@ -32,13 +32,20 @@ public class Controller implements Serializable{
 	private LogManager lm;
 
 	private String kiLej;
+	
+	private String vipKiLej;
 
 	public Controller(){
 	}
 
 	public void kivezet(String kiLej){
 		int i=Integer.parseInt(kiLej.substring(1,9));
-		tC.kivezet(i);
+		tC.kivezet(i,false);
+	}
+	
+	public void vipKivezet(String kiLej){
+		int i=Integer.parseInt(kiLej.substring(1,9));
+		tC.vipKivezet(i,true);
 	}
 	
 	
@@ -71,6 +78,14 @@ public class Controller implements Serializable{
 
 	public void setKiLej(String kiLej) {
 		this.kiLej = kiLej;
+	}
+
+	public String getVipKiLej() {
+		return vipKiLej;
+	}
+
+	public void setVipKiLej(String vipKiLej) {
+		this.vipKiLej = vipKiLej;
 	}
 	
 	

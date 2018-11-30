@@ -23,14 +23,23 @@ public class LoginBean implements Serializable {
 		
 		private boolean loggedIn;
 		
+		private boolean vip;
+		
 		@Inject
 		private NavigationBean nav;
 		
 		public String doLogin(){
+			User user=um.getUser(usr);
 			if(um.getUser(usr)!=null){ //&&this.Pass.equals(pass)){
-					usr=um.getUser(usr).getUser();
-					nev=um.getUser(usr).getNev();
+					usr=user.getFelh();
+					nev=user.getNev();
 					loggedIn=true;
+					if(user.getVip()==1){
+						this.vip=true;
+					} 
+					else{
+						this.vip=false;
+					}
 					return nav.redirectToLejCikk();
 			}
 			FacesMessage msg=new FacesMessage("Hibás felhasználó, bejelentkezés átugrása", "Bejelentkezési_Hiba");
@@ -78,4 +87,14 @@ public class LoginBean implements Serializable {
 		public void setLoggedIn(boolean loggedIn) {
 			this.loggedIn = loggedIn;
 		}
+
+		public boolean isVip() {
+			return vip;
+		}
+
+		public void setVip(boolean vip) {
+			this.vip = vip;
+		}
+		
+		
 }

@@ -52,6 +52,13 @@ public class InputHandler implements Serializable {
 		lcl.add(l);
 	}
 	
+	public void addVipLcl(String lej){
+		addLcl(lej);
+		controller.addView(lcl);
+		lcl.clear();
+		controller.vipKivezet(lej);
+	}
+	
 	public String navi(){
 		if(lcl.isEmpty()&&controller.getView().isEmpty()){
 			return nav.redirectToLejCikk();

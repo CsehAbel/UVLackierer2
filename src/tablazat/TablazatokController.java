@@ -60,8 +60,12 @@ public class TablazatokController implements Serializable {
 			}});
 	}
 	
-	public void kivezet(int kiLej){
-			this.addLocked(talal(kiLej));
+	public void kivezet(int kiLej,boolean vip){
+			this.addLocked(talal(kiLej),vip);
+	}
+	
+	public void vipKivezet(int kiLej,boolean vip){
+		this.addLocked(talal(kiLej),vip);
 	}
 	
 	public LejCikk talal(int kiLej){
@@ -75,12 +79,12 @@ public class TablazatokController implements Serializable {
 		return talalat;
 	}
 
-	public void addLocked(LejCikk l) {
-		if((lockedSorted.size()!=megjelenitendo.size())&&!l.equals(megjelenitendo.get(lockedSorted.size()))){
+	public void addLocked(LejCikk l,boolean vip) {
+		if((!vip)&&(lockedSorted.size()!=megjelenitendo.size())&&!l.equals(megjelenitendo.get(lockedSorted.size()))){
 			List<String> sent=new ArrayList<String>();
 			String datum=LocalDateTime.now().format(DateTimeFormatter.ofPattern("yy-MM-dd HH:mm"));
 			String targy=datum+" Lakkozó: a sorrendtől eltértek.";
-			String uzenet="Kiszedve:\r\n"+l.getSorszam()+"\t"+l.getL()+"\r\nEredeti lista:\r\n";
+			String uzenet="Berakva:\r\n"+l.getSorszam()+"\t"+l.getL()+"\r\nEredeti lista:\r\n";
 			List<LejCikk> listLc=new ArrayList<>();
 			listLc.addAll(view);
 			listLc.removeAll(lockedSorted);

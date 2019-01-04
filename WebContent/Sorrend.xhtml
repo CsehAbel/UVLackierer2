@@ -12,7 +12,19 @@
 		</ui:define>
 		<ui:define name="szalag">Lakkozási sorrend</ui:define>
 		<ui:define name="in">
-		    <h:form>
+		    
+			<h:form class="kform" id="emailhibaf">
+				<div class="kiv">
+				<span>Lejelentésszám: </span>
+				<h:inputText class="kivezet" id="kiinput" value="#{controller.kiLej}" converterMessage="Nem szám!" >
+					<f:validator binding="#{kiValidator}"></f:validator>
+				</h:inputText>
+				<h:commandButton class="gomb" action="#{controller.kivezet(controller.kiLej)}" value="Kivezetés" />
+				<h:message class="hiba" for="kiinput" errorStyle="color:red" />
+				</div>
+			</h:form>
+			
+			<h:form class="vform">
 		    	<div class="vipkiv">
 				<span>Kivételes prioritás:</span>
 				<h:inputText value="#{lejHandler.lejszam}" id="vipkiinput" class="kivezet" converterMessage="Nem szám!" >
@@ -22,16 +34,6 @@
 				<h:message class="hiba" for="vipkiinput" errorStyle="color:red" />
 				</div>
 		    </h:form>
-			<h:form class="tablakiv" id="emailhibaf">
-			
-				<div class="kiv">
-				<span>Lejelentésszám: </span>
-				<h:inputText class="kivezet" id="kiinput" value="#{controller.kiLej}" converterMessage="Nem szám!" >
-					<f:validator binding="#{kiValidator}"></f:validator>
-				</h:inputText>
-				<h:commandButton class="gomb" action="#{controller.kivezet(controller.kiLej)}" value="Kivezetés" />
-				<h:message class="hiba" for="kiinput" errorStyle="color:red" />
-				</div>
 				
 				<div class="container">
 				<h:dataTable class=" table table-fixed" var="lc" value="#{controller.megjelenitendo}">
@@ -64,7 +66,7 @@
 					</h:column>
 				</h:dataTable>
 				</div>
-			</h:form>
+			
 		</ui:define>
 	</ui:composition>
 </html>

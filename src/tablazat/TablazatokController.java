@@ -13,6 +13,7 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 
+import auth.LoginBean;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -20,6 +21,9 @@ import lej.entity.LejCikk;
 
 @SessionScoped
 public class TablazatokController implements Serializable {
+	
+	@Inject
+	private LoginBean loginBean;
 	
 	private String lblC;
 
@@ -84,7 +88,7 @@ public class TablazatokController implements Serializable {
 			List<String> sent=new ArrayList<String>();
 			String datum=LocalDateTime.now().format(DateTimeFormatter.ofPattern("yy-MM-dd HH:mm"));
 			String targy=datum+" Lakkozó: a sorrendtől eltértek.";
-			String uzenet="Berakva:\r\n"+l.getSorszam()+"\t"+l.getL()+"\r\nEredeti lista:\r\n";
+			String uzenet=""+loginBean.getUsr()+" "+loginBean.getNev()+"\r\nBerakva:\r\n"+l.getSorszam()+"\t"+l.getL()+"\r\nEredeti lista:\r\n";
 			List<LejCikk> listLc=new ArrayList<>();
 			listLc.addAll(view);
 			listLc.removeAll(lockedSorted);

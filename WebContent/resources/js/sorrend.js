@@ -1,4 +1,5 @@
 window.onload = function (){
+	
 	var elem=document.getElementsByClassName("kivezet")[0];
 	
 	elem.focus()
@@ -6,13 +7,8 @@ window.onload = function (){
 	elem.setSelectionRange(elem.value.length,elem.value.length);
 	
 	elem.value='';
-	
 	//
 	var elem2=document.getElementsByClassName("kivezet")[1];
-	
-	elem2.focus()
-	
-	elem2.setSelectionRange(elem2.value.length,elem2.value.length);
 	
 	elem2.value='';
 	//
@@ -20,6 +16,8 @@ window.onload = function (){
 	var bejel=document.getElementsByClassName("bejelentkezes")[0];
 	
 	bejel.value='';
+	
+	
 	
 	/*elem.addEventListener("input", function(event) {
 		if(event.keyCode === 13){

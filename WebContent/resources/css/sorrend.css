@@ -1,29 +1,18 @@
 
-.tablakiv{
+.vform,.kform{
 	float: left;
-	clear: both;
-	width: 100%;
 }
 
-.vipkiv{
+.kiv,.vipkiv{
 	float:left;
+	padding: 0px 10px;
+	width:100%;
 }
 
-.vipkiv > input{
-	width: 40%;
-	margin: 0px 0px 0px 10px;
-}
-
-.kiv{
-	float:left;
+.kiv > input,.vipkiv > input{
 	width: 50%;
-}
-
-.vipkiv,.kiv{ padding: 0px 10px;}
-
-.kiv >input{
-	width: 40%;
-	margin: 0px 20px;
+	margin: 0px 0px 0px 10px;
+	clear: right;
 }
 
 .vipkiv> input[type="submit"],.kiv > input[type="submit"]{
